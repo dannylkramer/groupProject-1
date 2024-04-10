@@ -1,4 +1,5 @@
-const fetchButton = document.getElementById('fetch-button');
+const fetchButton = document.getElementById('search-form');
+
 
 function getAlbumApi(albumTitle) {
     const url = "https://en.wikipedia.org/w/api.php";
@@ -25,7 +26,17 @@ function getAlbumApi(albumTitle) {
         .catch(error => console.log(error));
 }
 
-fetchButton.addEventListener('click', function() {
+fetchButton.addEventListener('click', function(event) {
+    event.preventDefault()
+    let userInput = document.getElementById("album-input");
+
+    if (userInput.value == "") {
+        console.log("An error has occurred.")}
+        else if (userInput.value === "Debut") {
+            
+        }
+    
+
     getAlbumApi("Taylor Swift (album)");
     getAlbumApi("Fearless (Taylor's Version)");
     getAlbumApi("Speak Now (Taylor's Version)")
@@ -38,7 +49,8 @@ fetchButton.addEventListener('click', function() {
     getAlbumApi("Midnights")
 });
 
-
+// function getTaylorAlbum
+// function
 
 
 
