@@ -1,6 +1,5 @@
 const fetchButton = document.getElementById('search-form');
 
-
 function getAlbumApi(albumTitle) {
     const url = "https://en.wikipedia.org/w/api.php";
     const params = new URLSearchParams({
@@ -10,7 +9,7 @@ function getAlbumApi(albumTitle) {
         format: "json",
         origin: "*"
     });
-    fetch(`${url}?${params}`)
+    return fetch(`${url}?${params}`)
         .then(response => response.json())
         .then(response => {
             const searchResults = response.query.search;
@@ -18,41 +17,76 @@ function getAlbumApi(albumTitle) {
                 if (result.title === albumTitle) {
                     const pageId = result.pageid;
                     const wikiUrl = `https://en.wikipedia.org/?curid=${pageId}`;
-                    console.log(`Link to ${albumTitle} Wikipedia page:`, wikiUrl);
-                    break;
+                    return wikiUrl;
                 }
             }
+            return null;
         })
-        .catch(error => console.log(error));
+        .catch(error => {
+            console.log(error);
+            return null;
+        });
 }
 
-fetchButton.addEventListener('click', function(event) {
-    event.preventDefault()
-    let userInput = document.getElementById("album-input");
+fetchButton.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
 
-    if (userInput.value == "") {
-        console.log("An error has occurred.")}
-        else if (userInput.value === "Debut") {
-            
-        }
-    
+    let userInput = document.getElementById("album-input").value.trim();
 
-    getAlbumApi("Taylor Swift (album)");
-    getAlbumApi("Fearless (Taylor's Version)");
-    getAlbumApi("Speak Now (Taylor's Version)")
-    getAlbumApi("Red (Taylor's Version)")
-    getAlbumApi("1989 (Taylor's Version)")
-    getAlbumApi("Reputation (album)")
-    getAlbumApi("Lover (album)")
-    getAlbumApi("Folklore (Taylor Swift album)")
-    getAlbumApi("Evermore")
-    getAlbumApi("Midnights")
+    // Check if the user input matches the word bank
+    if (
+        userInput !== "Debut" &&
+        userInput !== "Fearless" &&
+        userInput !== "Speak Now" &&
+        userInput !== "Red" &&
+        userInput !== "1989" &&
+        userInput !== "Reputation" &&
+        userInput !== "Lover" &&
+        userInput !== "Folklore" &&
+        userInput !== "Evermore" &&
+        userInput !== "Midnights"
+    ) {
+        console.log("That's not one of Taylor's albums. Try again swiftie!");
+        return;
+    }
+
+    const albums = [
+        "Taylor Swift (album)",
+        "Fearless (Taylor's Version)",
+        "Speak Now (Taylor's Version)",
+        "Red (Taylor's Version)",
+        "1989 (Taylor's Version)",
+        "Reputation (album)",
+        "Lover (album)",
+        "Folklore (Taylor Swift album)",
+        "Evermore",
+        "Midnights"
+    ];
+
+    const albumUrls = {};
+
+    let completedRequests = 0;
+
+    albums.forEach((album, index) => {
+        getAlbumApi(album)
+            .then(url => {
+                if (url) {
+                    albumUrls[album] = url;
+                } else {
+                    console.log(`Failed to retrieve URL for ${album}.`);
+                }
+
+                completedRequests++;
+
+                if (completedRequests === albums.length) {
+                    // Store album URLs in local storage
+                    localStorage.setItem('taylorSwiftAlbumUrls', JSON.stringify(albumUrls));
+                    console.log("Album URLs stored in local storage:", albumUrls);
+                }
+            })
+            .catch(error => console.log(error));
+    });
 });
-
-// function getTaylorAlbum
-// function
-
-
 
 
 
