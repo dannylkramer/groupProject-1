@@ -33,23 +33,6 @@ fetchButton.addEventListener('submit', function(event) {
 
     let userInput = document.getElementById("album-input").value.trim();
 
-    // Check if the user input matches the word bank
-    if (
-        userInput !== "Debut" &&
-        userInput !== "Fearless" &&
-        userInput !== "Speak Now" &&
-        userInput !== "Red" &&
-        userInput !== "1989" &&
-        userInput !== "Reputation" &&
-        userInput !== "Lover" &&
-        userInput !== "Folklore" &&
-        userInput !== "Evermore" &&
-        userInput !== "Midnights"
-    ) {
-        console.log("That's not one of Taylor's albums. Try again swiftie!");
-        return;
-    }
-
     const albums = [
         "Taylor Swift (album)",
         "Fearless (Taylor's Version)",
@@ -57,7 +40,7 @@ fetchButton.addEventListener('submit', function(event) {
         "Red (Taylor's Version)",
         "1989 (Taylor's Version)",
         "Reputation (album)",
-        "Lover (album)",
+        "Lover",
         "Folklore (Taylor Swift album)",
         "Evermore",
         "Midnights"
@@ -67,13 +50,17 @@ fetchButton.addEventListener('submit', function(event) {
 
     let completedRequests = 0;
 
-    albums.forEach((album, index) => {
+    for (let i = 0; i < albums.length; i++) {
+        const album = albums[i];
         getAlbumApi(album)
-            .then(url => {
+            .then(function(url) {
                 if (url) {
                     albumUrls[album] = url;
+                    if (album.toLowerCase().includes(userInput.toLowerCase())) {
+                        document.getElementById('taylor-results').innerHTML = `<a href="${url}" target="_blank">${album}</a>`;
+                    }
                 } else {
-                    console.log(`Failed to retrieve URL for ${album}.`);
+                    console.log("Failed to retrieve URL for " + album + ".");
                 }
 
                 completedRequests++;
@@ -84,24 +71,72 @@ fetchButton.addEventListener('submit', function(event) {
                     console.log("Album URLs stored in local storage:", albumUrls);
                 }
             })
-            .catch(error => console.log(error));
-    });
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+});fetchButton.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+
+    let userInput = document.getElementById("album-input").value.trim();
+
+    const albums = [
+        "Taylor Swift (album)",
+        "Fearless (Taylor's Version)",
+        "Speak Now (Taylor's Version)",
+        "Red (Taylor's Version)",
+        "1989 (Taylor's Version)",
+        "Reputation (album)",
+        "Lover",
+        "Folklore (Taylor Swift album)",
+        "Evermore",
+        "Midnights"
+    ];
+
+    const albumUrls = {};
+
+    let completedRequests = 0;
+
+    for (let i = 0; i < albums.length; i++) {
+        const album = albums[i];
+        getAlbumApi(album)
+            .then(function(url) {
+                if (url) {
+                    albumUrls[album] = url;
+                    // Check if the album title exactly matches the user input, ignoring case
+                    if ((userInput === "debut" && album.toLowerCase() === "taylor swift (album)") ||
+                        (album.toLowerCase().includes(userInput))) { // Convert album title to lowercase for comparison
+                        document.getElementById('taylor-results').innerHTML = `<a href="${url}" target="_blank">${album}</a>`;
+                    }
+                    console.log("Failed to retrieve URL for " + album + ".");
+                }
+
+                completedRequests++;
+
+                if (completedRequests === albums.length) {
+                    // Store album URLs in local storage
+                    localStorage.setItem('taylorSwiftAlbumUrls', JSON.stringify(albumUrls));
+                    console.log("Album URLs stored in local storage:", albumUrls);
+                }
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function displayLocalStorageData() {
+    const storedData = localStorage.getItem('taylorSwiftAlbumUrls');
+    if (storedData) {
+        const albumUrls = JSON.parse(storedData);
+        const userInput = document.getElementById("album-input").value.trim();
+        const url = albumUrls[userInput];
+        if (url) {
+            document.getElementById('taylor-results').innerHTML = `<a href="${url}" target="_blank">${userInput}</a>`;
+        } else {
+            console.log("URL not found for input:", userInput);
+        }
+    } else {
+        console.log("No data found in local storage.");
+    }
+}
