@@ -1,48 +1,35 @@
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fetch Demo</title>
-    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Taylor Swift Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="min-h-screen flex flex-col">
-<header class="p-5 text-center text-white bg-primary">
-    <h1 class="mb-0">Taylor Swift Generator</h1>
-</header>
-<div class="container text-center mt-4">
-    <form id="search-form" class="flex items-center justify-center">
-        <input type="text" id="album-input" placeholder="Enter album title" class="border border-gray-300 rounded-l py-2 px-4">
-        <button type="submit" id="search-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r">Search</button>
-    </form>
-</div>
-<main class="flex-grow flex justify-center items-center p-4 bg-light">
-    <section class="card rounded-lg bg-white p-4">
-        <header class="card-header text-center">
-            <h2 class="text-white">Results</h2>
-        </header>
-        <div class="text-center pt-4">
-            <div id="taylor-results"></div>
-            <div id="gif-container" class="max-w-full h-48 overflow-hidden"></div>
-        </div>
-    </section>
-</main>
-<section class="container mt-4">
-    <h2 class="text-center">Enter an Album:</h2>
-    <div class="card text-center">
-        <p>Debut</p>
-        <p>Fearless</p>
-        <p>Speak Now</p>
-        <p>Red</p>
-        <p>1989</p>
-        <p>Reputation</p>
-        <p>Lover</p>
-        <p>Folklore</p>
-        <p>Evermore</p>
-        <p>Midnights</p>
+<body class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="max-w-lg w-full p-8 bg-white shadow-md rounded-md">
+        <h1 class="text-3xl font-bold mb-4 text-center">Taylor Swift Generator</h1>
+        <form id="search-form" class="flex flex-col items-center space-y-4">
+            <input id="album-input" type="text" class="px-4 py-2 border border-gray-300 rounded-md" placeholder="Enter an album">
+            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200">Search</button>
+        </form>
+        <div id="taylor-results" class="mt-8 text-blue-600 flex justify-center"></div>
+        <div id="gif-container" class="mt-8"></div>
     </div>
-</section>
-<script src="script.js"></script>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white p-8 rounded-lg">
+            <h2 class="text-2xl font-bold mb-4">The Taylor Swift Experience</h2>
+            <button id="dismiss-modal" class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-200">Dismiss</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
