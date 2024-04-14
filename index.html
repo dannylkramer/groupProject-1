@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fetch Demo</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body class="min-100-vh flex-column">
-    <header class="p-5 text-center text-white bg-primary">
-      <h1>Taylor Swift Generator</h1>
-    </header>
-    <div class="card">
-      Enter a Keyword:
-      <p>Debut</p>
-      <p>Fearless</p>
-      <p>Speak Now</p>
-      <p>Red</p>
-      <p>1989</p>
-      <p>Reputation</p>
-      <p>Lover</p>
-      <p>Folklore</p>
-      <p>Evermore</p>
-      <p>Midnights</p>
-    </div>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-100-vh flex-column">
+<header class="p-5 text-center text-white bg-primary">
+    <h1 class="mb-0">Taylor Swift Generator</h1>
+</header>
+<div class="container text-center mt-4">
     <form id="search-form">
-      <input type="text" id="album-input" placeholder="Enter album title">
-      <button type="submit" id="search-button">Search</button>
+        <input type="text" id="album-input" placeholder="Enter album title">
+        <button type="submit" id="search-button">Search</button>
     </form>
-    <main class="flex-row justify-center align-center col-auto p-4 bg-light">
-      <section class="card card-rounded col-7 bg-white">
+</div>
+<main class="flex-row justify-center align-center col-auto p-4 bg-light">
+    <section class="card card-rounded col-7 bg-white">
         <header class="card-header text-center">
-          <h2 class="text-white">
-            <p>Results</p>
-          </h2>
+            <h2 class="text-white">Results</h2>
         </header>
         <div class="text-center pt-4">
-          <div id="taylor-results"></div>
+            <div id="taylor-results"></div>
+            <div id="gif-container"></div> <!-- Container for GIF -->
         </div>
-      </section>
-    </main>
-    <script src="script.js"></script>
-  </body>
+    </section>
+</main>
+<section class="container mt-4">
+    <h2 class="text-center">Enter an Album:</h2>
+    <div class="card text-center">
+        <p>Debut</p>
+        <p>Fearless</p>
+        <p>Speak Now</p>
+        <p>Red</p>
+        <p>1989</p>
+        <p>Reputation</p>
+        <p>Lover</p>
+        <p>Folklore</p>
+        <p>Evermore</p>
+        <p>Midnights</p>
+    </div>
+</section>
+<script src="script.js"></script>
+</body>
 </html>

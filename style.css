@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+}
+
+header {
+    padding: 20px;
+    background-color: #007bff;
+    color: #fff;
+}
+
+header h1 {
+    margin: 0 auto;
+    width: fit-content; /* Adjust width */
+}
+
+form {
+    margin-top: 20px;
+}
+
+.card {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.results-container {
+    margin-top: 20px;
+}
+
+.result-url {
+    margin-top: 10px;
+}
+
+iframe {
+    margin-top: 20px;
+}
+
+#gif-container {
+    max-width: 100%; /* Ensure the GIF doesn't exceed the width of its container */
+    max-height: 270px; /* Set a maximum height for the container */
+    overflow: hidden; /* Hide any overflow if the GIF exceeds the maximum height */
+}
+
+#gif-container img {
+    width: auto; /* Allow the GIF to adjust its width based on its aspect ratio */
+    height: 100%; /* Ensure the GIF fills the container vertically */
+    display: block; /* Ensure the GIF is displayed as a block element */
+    margin: 0 auto; /* Center the GIF horizontally */
+}
