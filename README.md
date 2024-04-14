@@ -13,6 +13,7 @@
       </ul>
     </li>
     <li><a href="#link-to-deployed-application">Link to Deployed Application</a></li>
+    <li><a href="#google-slides">Google Slides</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -79,6 +80,11 @@ GIVEN a search form:
 
 
 See the [closed issues](https://github.com/dannylkramer/groupProject-1/issues/10) for a full list of features.
+
+<!-- SLIDE DECK -->
+## Google Slides
+
+Our presentation shares more details and visuals about the project. You can view it [here](https://docs.google.com/presentation/d/1lgCbUdH2qKtzP53bV_bnVkBa2-GQ4tEb0JCfK5FDZew/edit?usp=sharing).
 
 <!-- LICENSE -->
 ## License
