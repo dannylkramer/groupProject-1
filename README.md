@@ -21,18 +21,15 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Blog Demo
+3rd Party API integration project
 
-![Project Blog Post Demo](/assets/blogPostDemo.gif)
+This project was designed to teach us about fetching 2 third party APIs and displaying their data on our webpage. 
 
-
-This project was designed to teach us about a two page website that takes input and outputs dynamic blog posts using local storage. This simple blog post app is a great example to explore the document object model's power.
 
 Here's why we're doing this:
-* Sets the stage for more advanced JavaScript tasks
+* Understand the functionailty of fetching and appending 3rd party API data
 * Experience organizational file structure with a multi page site
 * Showcase the importance of local storage
-* Explore Document Object Model's power
 
 
 <!-- GETTING STARTED -->
@@ -49,11 +46,11 @@ reccomended to install Visual Studio code as well.
 
 1. Clone the repo
    ```sh
-   git clone git@github.com:stvrmrz/Challenge-04-Blog.git
+   git@github.com:dannylkramer/groupProject-1.git
    ```
 3. Open the repo 
-   ```sh
-   cd Challenge-04-Blog
+   ```
+   cd groupProject-1
    ```
 4. Open with VS Code
    ```sh
@@ -63,36 +60,25 @@ reccomended to install Visual Studio code as well.
 <!-- USAGE EXAMPLES -->
 ## Link to Deployed Application
 
-_Here is a link to my [Deployed Blog Web Page](https://stvrmrz.github.io/Challenge-04-Blog/)_
+_Here is a link to my [Deployed Taylor Swift Article & Gif Generator Web Page]
+[Deployed Blog Web Page](https://dannylkramer.github.io/groupProject-1/)_
 
 <!-- ROADMAP -->
 ## Roadmap
 
-GIVEN a personal blog
+GIVEN a search form:
 - [x] WHEN I load the app,
-      THEN I am presented with the landing page containing a form with labels and inputs for username, blog title, and blog content.
+      THEN I am presented with the landing page containing a modal and a form for user input. 
 - [x] WHEN I submit the form,
-      THEN blog post data is stored to localStorage.
-- [x] WHEN the form submits,
-      THEN I am redirected to the posts page.
-- [x] WHEN I try to submit a form without a username, title, or content,
-      THEN I am presented with a message that prompts me to complete the form.
-- [x] WHEN I view the posts page,
-      THEN I am presented with a header, with a light mode/dark mode toggle, and a "Back" button.
-- [x] WHEN I click the light mode/dark mode toggle,
-      THEN the page content's styles update to reflect the selection.
-- [x] WHEN I click the "Back" button,
-      THEN I am redirected back to the landing page where I can input more blog entries.
-- [x] WHEN I view the main content,
-      THEN I am presented with a list of blog posts that are pulled from localStorage.
-- [x] WHEN I view localStorage,
-      THEN I am presented with a JSON array of blog post objects, each including the post author's username, title of the post, and post's content.
-- [x] WHEN I take a closer look at a single blog entry in the list,
-      THEN I can see the title, the content, and the author of the post.
-- [x] WHEN I view the footer,
-      THEN I am presented with a link to the developer's portfolio.
+      THEN data is pulled from 2 third party API's and displayed on webpage
+- [x] WHEN I try to submit a form without a correct input list
+      THEN I am presented with an error message 
+- [x] WHEN I view the given link
+      THEN I am redirected to the corresponding section on wikipedia page
 
-See the [closed issues](https://github.com/stvrmrz/Challenge-04-Blog/issues/1) for a full list of features.
+
+
+See the [closed issues](https://github.com/dannylkramer/groupProject-1/issues/10) for a full list of features.
 
 <!-- LICENSE -->
 ## License
@@ -103,18 +89,16 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 
 Steve Ramirez - [@stvrmrz](https://twitter.com/stvrmrz) - stevearamirez@gmail.com
+Danny Kramer - dannylkramer@icloud.com
+Charlie Boyle - charlieboyle252@gmail.com
 
-Project Link: [https://github.com/stvrmrz/Challenge-04-Blog](https://github.com/stvrmrz/Challenge-04-Blog)
+Project Link: [https://github.com/dannylkramer/groupProject-1](https://github.com/dannylkramer/groupProject-1)
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
 Here are some of the resources that I used that I want to give credit to:
 
-* [othneildrew Best-README-Template](https://github.com/othneildrew/Best-README-Template)
-* [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
-* [lipsum](https://www.lipsum.com/)
-* [stack overflow](https://stackoverflow.com/questions/5392882/why-is-chrome-showing-a-please-fill-out-this-field-tooltip-on-empty-fields)
-* [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)
-* [w3schools](https://www.w3schools.com/jsref/prop_win_localstorage.asp)
-* [CSS Tricks)](https://css-tricks.com/dark-modes-with-css/)
+* [Documentation for Giphy API](https://developers.giphy.com/docs/api)
+* [Documentation for Wikipedia API](https://www.mediawiki.org/wiki/API:Main_page#API_documentation)
+* [Documentation for Tailwind CSS](https://v2.tailwindcss.com/docs)
