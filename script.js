@@ -1,5 +1,7 @@
 const fetchButton = document.getElementById('search-form');
 
+
+
 function getAlbumApi(albumTitle) {
     const url = "https://en.wikipedia.org/w/api.php";
     const params = new URLSearchParams({
@@ -27,6 +29,30 @@ function getAlbumApi(albumTitle) {
             return null;
         });
 }
+// New function for getting giphy data. The search term in the API url needs to be defined as equal to the value of the user input. We think the function has the right logic but were unable to finish.
+
+
+// function getGiphyApi() {
+//     const apiKey = "LTUvcpZALVfP0eEpvzvp8WlbLRs36Sl2"
+//     const giphyAPI =  `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=TaylorSwift,${searchTerm}&limit=1&rating=pg`
+//         fetch(giphyAPI)
+//         .then(response => response.json())
+        
+//         .then(response => {
+//             const data = response.data;
+//             if (data && data.length > 0) {
+//               const gifUrl = data[0].embed_url;
+//               return gifUrl;
+//             } else {
+//               return null;
+//             }
+//           })
+//           .catch(error => {
+//             console.error(error);
+//             return null;
+//          });
+    
+//         }
 
 fetchButton.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission behavior
@@ -75,6 +101,10 @@ fetchButton.addEventListener('submit', function(event) {
                 console.log(error);
             });
     }
+
+    // We have to make sure the Giphy components (new giphy function) are simultaneously called with the wiki URL. 
+
+    
 });fetchButton.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission behavior
 
@@ -123,6 +153,8 @@ fetchButton.addEventListener('submit', function(event) {
                 console.log(error);
             });
     }
+
+
 });
 
 function displayLocalStorageData() {
