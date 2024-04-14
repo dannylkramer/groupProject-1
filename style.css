@@ -1,3 +1,4 @@
+/* Custom CSS */
 body {
     margin: 0;
     padding: 0;
@@ -36,19 +37,19 @@ form {
     margin-top: 10px;
 }
 
-iframe {
-    margin-top: 20px;
+/* End of Custom CSS */
+
+/* Tailwind Overrides (if needed) */
+#search-form input[type="text"] {
+    /* Add Tailwind styles here if needed */
+    
 }
 
-#gif-container {
-    max-width: 100%; /* Ensure the GIF doesn't exceed the width of its container */
-    max-height: 270px; /* Set a maximum height for the container */
-    overflow: hidden; /* Hide any overflow if the GIF exceeds the maximum height */
+#search-form button[type="submit"] {
+    /* Add Tailwind styles here if needed */
 }
 
 #gif-container img {
-    width: auto; /* Allow the GIF to adjust its width based on its aspect ratio */
-    height: 100%; /* Ensure the GIF fills the container vertically */
-    display: block; /* Ensure the GIF is displayed as a block element */
-    margin: 0 auto; /* Center the GIF horizontally */
+    /* Add Tailwind styles here if needed */
+    margin-top: 10px;
 }

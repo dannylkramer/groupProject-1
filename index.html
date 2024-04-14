@@ -4,26 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fetch Demo</title>
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="min-100-vh flex-column">
+<body class="min-h-screen flex flex-col">
 <header class="p-5 text-center text-white bg-primary">
     <h1 class="mb-0">Taylor Swift Generator</h1>
 </header>
 <div class="container text-center mt-4">
-    <form id="search-form">
-        <input type="text" id="album-input" placeholder="Enter album title">
-        <button type="submit" id="search-button">Search</button>
+    <form id="search-form" class="flex items-center justify-center">
+        <input type="text" id="album-input" placeholder="Enter album title" class="border border-gray-300 rounded-l py-2 px-4">
+        <button type="submit" id="search-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r">Search</button>
     </form>
 </div>
-<main class="flex-row justify-center align-center col-auto p-4 bg-light">
-    <section class="card card-rounded col-7 bg-white">
+<main class="flex-grow flex justify-center items-center p-4 bg-light">
+    <section class="card rounded-lg bg-white p-4">
         <header class="card-header text-center">
             <h2 class="text-white">Results</h2>
         </header>
         <div class="text-center pt-4">
             <div id="taylor-results"></div>
-            <div id="gif-container"></div> <!-- Container for GIF -->
+            <div id="gif-container" class="max-w-full h-48 overflow-hidden"></div>
         </div>
     </section>
 </main>
