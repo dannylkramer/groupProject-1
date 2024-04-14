@@ -1,7 +1,5 @@
 const fetchButton = document.getElementById('search-form');
 
-
-
 function getAlbumApi(albumTitle) {
     const url = "https://en.wikipedia.org/w/api.php";
     const params = new URLSearchParams({
@@ -29,30 +27,27 @@ function getAlbumApi(albumTitle) {
             return null;
         });
 }
-// New function for getting giphy data. The search term in the API url needs to be defined as equal to the value of the user input. We think the function has the right logic but were unable to finish.
 
-
-// function getGiphyApi() {
-//     const apiKey = "LTUvcpZALVfP0eEpvzvp8WlbLRs36Sl2"
-//     const giphyAPI =  `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=TaylorSwift,${searchTerm}&limit=1&rating=pg`
-//         fetch(giphyAPI)
-//         .then(response => response.json())
-        
-//         .then(response => {
-//             const data = response.data;
-//             if (data && data.length > 0) {
-//               const gifUrl = data[0].embed_url;
-//               return gifUrl;
-//             } else {
-//               return null;
-//             }
-//           })
-//           .catch(error => {
-//             console.error(error);
-//             return null;
-//          });
-    
-//         }
+function getGiphyApi(searchTerm) {
+    const apiKey = "LTUvcpZALVfP0eEpvzvp8WlbLRs36Sl2";
+    const concatenatedSearchTerm = `Taylor Swift ${searchTerm}`;
+    const giphyAPI = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${concatenatedSearchTerm}&limit=1&rating=pg`;
+    return fetch(giphyAPI)
+        .then(response => response.json())
+        .then(response => {
+            const data = response.data;
+            if (data && data.length > 0) {
+                const gifUrl = data[0].images.original.url; // Use images.original.url instead of embed_url
+                return gifUrl;
+            } else {
+                return null;
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            return null;
+        });
+}
 
 fetchButton.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission behavior
@@ -82,7 +77,8 @@ fetchButton.addEventListener('submit', function(event) {
             .then(function(url) {
                 if (url) {
                     albumUrls[album] = url;
-                    if (album.toLowerCase().includes(userInput.toLowerCase())) {
+                    if ((userInput === "debut" && album.toLowerCase() === "taylor swift (album)") ||
+                        (album.toLowerCase().includes(userInput))) {
                         document.getElementById('taylor-results').innerHTML = `<a href="${url}" target="_blank">${album}</a>`;
                     }
                 } else {
@@ -102,73 +98,17 @@ fetchButton.addEventListener('submit', function(event) {
             });
     }
 
-    // We have to make sure the Giphy components (new giphy function) are simultaneously called with the wiki URL. 
-
-    
-});fetchButton.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission behavior
-
-    let userInput = document.getElementById("album-input").value.trim();
-
-    const albums = [
-        "Taylor Swift (album)",
-        "Fearless (Taylor's Version)",
-        "Speak Now (Taylor's Version)",
-        "Red (Taylor's Version)",
-        "1989 (Taylor's Version)",
-        "Reputation (album)",
-        "Lover",
-        "Folklore (Taylor Swift album)",
-        "Evermore",
-        "Midnights"
-    ];
-
-    const albumUrls = {};
-
-    let completedRequests = 0;
-
-    for (let i = 0; i < albums.length; i++) {
-        const album = albums[i];
-        getAlbumApi(album)
-            .then(function(url) {
-                if (url) {
-                    albumUrls[album] = url;
-                    // Check if the album title exactly matches the user input, ignoring case
-                    if ((userInput === "debut" && album.toLowerCase() === "taylor swift (album)") ||
-                        (album.toLowerCase().includes(userInput))) { // Convert album title to lowercase for comparison
-                        document.getElementById('taylor-results').innerHTML = `<a href="${url}" target="_blank">${album}</a>`;
-                    }
-                    console.log("Failed to retrieve URL for " + album + ".");
-                }
-
-                completedRequests++;
-
-                if (completedRequests === albums.length) {
-                    // Store album URLs in local storage
-                    localStorage.setItem('taylorSwiftAlbumUrls', JSON.stringify(albumUrls));
-                    console.log("Album URLs stored in local storage:", albumUrls);
-                }
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-    }
-
-
+    // Fetch Giphy API for the GIF
+    getGiphyApi(userInput)
+        .then(function(url) {
+            if (url) {
+                // Display the GIF directly
+                document.getElementById('gif-container').innerHTML = `<img src="${url}" alt="GIF" width="480" height="270">`;
+            } else {
+                console.log("Failed to retrieve GIF for " + userInput + ".");
+            }
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
 });
-
-function displayLocalStorageData() {
-    const storedData = localStorage.getItem('taylorSwiftAlbumUrls');
-    if (storedData) {
-        const albumUrls = JSON.parse(storedData);
-        const userInput = document.getElementById("album-input").value.trim();
-        const url = albumUrls[userInput];
-        if (url) {
-            document.getElementById('taylor-results').innerHTML = `<a href="${url}" target="_blank">${userInput}</a>`;
-        } else {
-            console.log("URL not found for input:", userInput);
-        }
-    } else {
-        console.log("No data found in local storage.");
-    }
-}
