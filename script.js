@@ -1,4 +1,9 @@
+
+
+
 const fetchButton = document.getElementById('search-form');
+const modal = document.getElementById('modal');
+const dismissButton = document.getElementById('dismiss-modal');
 
 function getAlbumApi(albumTitle) {
     const url = "https://en.wikipedia.org/w/api.php";
@@ -112,3 +117,21 @@ fetchButton.addEventListener('submit', function(event) {
             console.log(error);
         });
 });
+
+// Function to show the modal
+function showModal() {
+    modal.classList.remove('hidden');
+}
+
+// Function to hide the modal
+function hideModal() {
+    modal.classList.add('hidden');
+}
+
+// Event listener for dismissing the modal
+dismissButton.addEventListener('click', function() {
+    hideModal();
+});
+
+// Call showModal() to show the modal immediately when the page loads
+showModal();
