@@ -1,35 +1,60 @@
 
 
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for character set and viewport -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the webpage -->
     <title>Taylor Swift Generator</title>
+    <!-- Link to Tailwind CSS stylesheet -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="min-h-screen flex items-center justify-center bg-gray-100">
-    <div class="max-w-lg w-full p-8 bg-white shadow-md rounded-md">
+    <!-- Main content container -->
+    <div class="max-w-lg w-full p-8 bg-white shadow-md rounded-md flex flex-col items-center">
+        <!-- Page title -->
         <h1 class="text-3xl font-bold mb-4 text-center">Taylor Swift Generator</h1>
+        <!-- Form for album search -->
         <form id="search-form" class="flex flex-col items-center space-y-4">
+            <!-- Input field for entering album name -->
             <input id="album-input" type="text" class="px-4 py-2 border border-gray-300 rounded-md" placeholder="Enter an album">
+            <!-- Submit button for initiating search -->
             <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200">Search</button>
         </form>
+        <!-- Container for displaying Taylor Swift Wikipedia links -->
         <div id="taylor-results" class="mt-8 text-blue-600 flex justify-center"></div>
+        <!-- Container for displaying GIF -->
         <div id="gif-container" class="mt-8"></div>
     </div>
 
-    <!-- Modal -->
-    <div id="modal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center hidden">
-        <div class="bg-white p-8 rounded-lg">
-            <h2 class="text-2xl font-bold mb-4">The Taylor Swift Experience</h2>
-            <button id="dismiss-modal" class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-200">Dismiss</button>
-        </div>
+    <!-- Word bank container -->
+    <div class="max-w-sm w-full p-8 bg-white shadow-md rounded-md ml-8">
+        <h2 class="text-lg font-semibold mb-4">Taylor Swift Albums</h2>
+        <ul class="list-disc pl-4">
+            <li>Debut</li>
+            <li>Fearless</li>
+            <li>Speak Now</li>
+            <li>Red</li>
+            <li>1989</li>
+            <li>Reputation</li>
+            <li>Lover</li>
+            <li>Folklore</li>
+            <li>Evermore</li>
+            <li>Midnights</li>
+        </ul>
     </div>
 
+    <!-- Alert box for displaying success message -->
+    <div id="alert" class="hidden fixed bottom-0 left-0 right-0 mx-auto w-96 bg-green-400 py-2 px-4 text-white font-bold rounded-md">
+        <!-- Text inside the alert box -->
+        <p id="alert-text"></p>
+    </div>
+    
+    <!-- JavaScript file for handling user interactions -->
     <script src="script.js"></script>
 </body>
 </html>
+
