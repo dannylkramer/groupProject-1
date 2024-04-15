@@ -62,7 +62,7 @@ reccomended to install Visual Studio code as well.
 ## Link to Deployed Application
 
 _Here is a link to my [Deployed Taylor Swift Article & Gif Generator Web Page]
-[Deployed Blog Web Page](https://dannylkramer.github.io/groupProject-1/)_
+[Deployed Third Party API Web Page](https://dannylkramer.github.io/groupProject-1/)_
 
 <!-- ROADMAP -->
 ## Roadmap
