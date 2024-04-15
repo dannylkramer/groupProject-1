@@ -70,6 +70,8 @@ _Here is a link to my [Deployed Taylor Swift Article & Gif Generator Web Page]
 
 GIVEN a search form:
 - [x] WHEN I launch the app,
+      THEN I am presented with a full screen modal welcoming me to the Taylor Swift experience
+- [x] WHEN I dismiss the modal and get to the main application,
       THEN I am presented with a web page containing a search form and a list of Taylor Swift albums. 
 - [x] WHEN I submit a search for one of Taylor Swift's albums in the list,
       THEN data is pulled from 2 third party API's (Giphy and Wikipedia)
