@@ -84,7 +84,7 @@ fetchButton.addEventListener('submit', function(event) {
         "red": "Red (Taylor's Version)",
         "1989": "1989 (Taylor's Version)",
         "reputation": "Reputation (album)",
-        "lover": "Lover",
+        "lover": "Lover (album)",
         "folklore": "Folklore (Taylor Swift album)",
         "evermore": "Evermore",
         "midnights": "Midnights"
